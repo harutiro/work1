@@ -6,45 +6,102 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    var ans = 0.0f
+    var ans = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        pura1.setBackgroundColor(Color(#47885E))
-        pura10.setBackgroundColor(Color(#47885E))
-        mai1.setBackgroundColor(Color(#47885e))
-        mai10.setBackgroundColor(Color(#47885e))
+        pura1.setBackgroundColor(Color.parseColor("#47885E"))
+        pura10.setBackgroundColor(Color.parseColor("#47885E"))
+        mai05.setBackgroundColor(Color.parseColor("#47885e"))
+        mai10.setBackgroundColor(Color.parseColor("#47885e"))
+        mai05.setBackgroundColor(Color.parseColor("#47885e"))
+        mai05.setBackgroundColor(Color.parseColor("#47885e"))
 
         pura1.setOnClickListener {
             ans++
             nam.text = ans.toString()
+
+            iro()
+            pura1.setBackgroundColor(Color.parseColor("#9079ad"))
+
+
+
         }
+
         mai1.setOnClickListener {
             ans--
             nam.text = ans.toString()
+            iro()
+            mai1.setBackgroundColor(Color.parseColor("#9079ad"))
+
+
         }
         pura10.setOnClickListener {
             ans+=10
             nam.text = ans.toString()
+            iro()
+            pura10.setBackgroundColor(Color.parseColor("#9079ad"))
+
+
         }
         mai10.setOnClickListener {
             ans-=10
             nam.text = ans.toString()
+            iro()
+            mai10.setBackgroundColor(Color.parseColor("#9079ad"))
+
+
+        }
+        pura05.setOnClickListener {
+            ans+=0.5
+            nam.text = ans.toString()
+            iro()
+            pura05.setBackgroundColor(Color.parseColor("#9079ad"))
+
+
+
+        }
+        mai05.setOnClickListener {
+            ans-=0.5
+            nam.text = ans.toString()
+            iro()
+            mai05.setBackgroundColor(Color.parseColor("#9079ad"))
+
+
         }
 
-        when (ans) {
-            0 -> {
-                nam.setTextColor("Color(#000000)")
+
+
+    }
+    fun iro(){
+        pura1.setBackgroundColor(Color.parseColor("#47885E"))
+        mai1.setBackgroundColor(Color.parseColor("#47885E"))
+        pura10.setBackgroundColor(Color.parseColor("#47885e"))
+        mai10.setBackgroundColor(Color.parseColor("#47885e"))
+        pura05.setBackgroundColor(Color.parseColor("#47885e"))
+        mai05.setBackgroundColor(Color.parseColor("#47885e"))
+
+        when (ans%5) {
+            0.0 -> {
+                nam.setTextColor(Color.BLACK)
             }
-            5 -> {
-                nam.setTextColor("Color(#000000)")
+            1.0 -> {
+                nam.setTextColor(Color.RED)
             }
-            1 -> {
-                nam.setTextColor("Color(#E91E63)")
+            2.0 -> {
+                nam.setTextColor(Color.BLUE)
             }
+            3.0 -> {
+                nam.setTextColor(Color.GREEN)
+            }
+            4.0 -> {
+                nam.setTextColor(Color.LTGRAY)
+            }
+
         }
     }
+
 }
