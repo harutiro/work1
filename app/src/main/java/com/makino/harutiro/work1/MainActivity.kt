@@ -1,12 +1,13 @@
 package com.makino.harutiro.work1
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    var ans = 0.0
+    var ans = 0.0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         pura05.setOnClickListener {
-            ans+=0.5
+            ans+=0.5f
             nam.text = ans.toString()
             iro()
             pura05.setBackgroundColor(Color.parseColor("#9079ad"))
@@ -65,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         mai05.setOnClickListener {
-            ans-=0.5
+            ans-=0.5f
             nam.text = ans.toString()
             iro()
             mai05.setBackgroundColor(Color.parseColor("#9079ad"))
@@ -77,6 +78,8 @@ class MainActivity : AppCompatActivity() {
 
     }
     fun iro(){
+
+        //リセット
         pura1.setBackgroundColor(Color.parseColor("#47885E"))
         mai1.setBackgroundColor(Color.parseColor("#47885E"))
         pura10.setBackgroundColor(Color.parseColor("#47885e"))
@@ -84,24 +87,37 @@ class MainActivity : AppCompatActivity() {
         pura05.setBackgroundColor(Color.parseColor("#47885e"))
         mai05.setBackgroundColor(Color.parseColor("#47885e"))
 
+
+        //色変更
         when (ans%5) {
-            0.0 -> {
+            0.0f -> {
                 nam.setTextColor(Color.BLACK)
             }
-            1.0 -> {
+            1.0f -> {
                 nam.setTextColor(Color.RED)
             }
-            2.0 -> {
+            2.0f -> {
                 nam.setTextColor(Color.BLUE)
             }
-            3.0 -> {
+            3.0f -> {
                 nam.setTextColor(Color.GREEN)
             }
-            4.0 -> {
+            4.0f -> {
                 nam.setTextColor(Color.LTGRAY)
             }
 
         }
+
+        //画面推
+        if(100<=ans) {
+            val nextPage = Intent(this, nextgamen::class.java)
+            startActivity(nextPage)
+            finish()
+        }
+
+
+
+
     }
 
 }

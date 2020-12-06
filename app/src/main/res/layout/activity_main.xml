@@ -5,13 +5,13 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="100dp"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/nam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
         android:layout_marginBottom="100dp"
         android:text="0"
         android:textSize="32dp"
