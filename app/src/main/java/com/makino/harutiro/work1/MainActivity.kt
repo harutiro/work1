@@ -10,14 +10,19 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     var ans = 0.0f
+    //static
+    companion object {
+        var zyoutaimozi = "miman"
+    }
+    //一番最初に読み込んだかを判断する変数
+    var zyoutai = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //一番最初に読み込んだかを判断する変数
-        var zyoutai = 0
+
         //インスタンス作成
         var dataStore: SharedPreferences = getSharedPreferences("namDate", Context.MODE_PRIVATE)
 
@@ -118,6 +123,7 @@ class MainActivity : AppCompatActivity() {
     }
     fun iro(dousa:Int){
 
+
         //リセット
         pura1.setBackgroundColor(Color.parseColor("#47885E"))
         mai1.setBackgroundColor(Color.parseColor("#47885E"))
@@ -148,10 +154,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         //画面推　
-        if(100<=ans && dousa != 1) {
+
+        if(100<=ans && (zyoutaimozi == "miman")){
+            zyoutaimozi = "izyou"
+        }
+        if(100>ans && (zyoutaimozi == "owatta")){
+            zyoutaimozi = "miman"
+        }
+
+        if(("izyou"== zyoutaimozi) && dousa != 1) {
+            zyoutaimozi = "owatta"
             val nextPage = Intent(this, nextgamen::class.java)
             startActivity(nextPage)
             finish()
+
         }
 
     }
